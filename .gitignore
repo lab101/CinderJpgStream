@@ -1,7 +1,6 @@
 #OS junk files
 [Tt]humbs.db
 *.DS_Store
-movies/*
 
 #Visual Studio files
 *.[Oo]bj
@@ -55,3 +54,16 @@ build/*
 *.pbxuser
 *.xcworkspace
 xcuserdata
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
