@@ -7,24 +7,22 @@
 //
 
 #include "JpgStream.h"
-#include "cinder/gl/gl.h"
+
+//#include "cinder/gl/gl.h"
 #include "cinder/Utilities.h"
 #include "cinder/app/AppBasic.h"
 #include "cinder/ImageIo.h"
 
 #include <iostream>
-#include <istream>
 #include <fstream>
 #include <ostream>
 #include <string>
 #include <vector>
 
 #include <boost/asio.hpp>
-#include <boost/bind.hpp>
 #include <boost/algorithm/string/split.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/classification.hpp>
-#include <boost/thread/thread.hpp>
 
 
 using namespace ci;
@@ -90,7 +88,7 @@ void JpgStream::startStream(){
 		request_stream << "GET " << mPath << " HTTP/1.1\r\n";
 		request_stream << "Host: " << mUrl << "\r\n";
 		request_stream << "Accept: */*\r\n";
-		request_stream << "Connection: close\r\n\r\n";
+		request_stream << "Connection: keep-alive\r\n\r\n";
 		
 		// Send the request.
 		boost::asio::write(socket, request);
@@ -111,7 +109,7 @@ void JpgStream::startStream(){
 		bool resetBuffer ;
 		string boundary = "--boundary";
 		
-		while(boost::asio::read_until(socket, response, EOI)){
+		while(boost::asio::read_until(socket, response, "H--boundary")){
 			//	while (boost::asio::read(socket, response, boost::asio::transfer_at_least(1), error)) {
 			//output << &response;
 			
@@ -119,8 +117,6 @@ void JpgStream::startStream(){
 
 
 			//boost::this_thread::sleep(boost::posix_time::seconds(1));
-			
-//			boost::asio::read(socket, response, boost::asio::transfer_at_least(1), error);
 			
 		//	cout << ci::app::getElapsedSeconds()  << "\n";
 			
@@ -134,7 +130,6 @@ void JpgStream::startStream(){
 						cBuf[c-1] = 0; // NULL terminator
 						string line(cBuf);
 						
-						//cout << "line // " << line << std::endl;
 						if(boost::iequals("--boundary",line)) {
 							//std::cout << "new marker\n";
 							

@@ -6,11 +6,9 @@
 #include <iostream>
 #include <istream>
 #include <fstream>
-#include <regex.h>
 
-#include <iostream>
 #include <boost/thread.hpp>
-#include <boost/date_time.hpp>
+//#include <boost/date_time.hpp>
 
 
 #include "JpgStream.h"
@@ -40,19 +38,22 @@ class JpgStreamApp : public AppBasic {
 
 
 
-
-
-
 //http://148.61.142.228/axis-cgi/mjpg/video.cgi
+
+
+//
 
 void JpgStreamApp::setup()
 {
 	
-	stream1.setup("212.142.228.68","/axis-cgi/mjpg/video.cgi","80");
+//	stream1.setup("212.142.228.68","/axis-cgi/mjpg/video.cgi","80");
+	stream1.setup("148.61.142.228","/axis-cgi/mjpg/video.cgi","80");
+//	stream1.setup("76.10.86.11","/axis-cgi/mjpg/video.cgi?resolution=4CIF&camera=5","80");
 //	stream1.setup("10.200.10.113","/","8080");
 //	stream1.startStream();
 	
-	boost::thread* thr = new boost::thread(boost::bind(&JpgStream::startStream, &stream1));
+    boost::thread t(&JpgStream::startStream, &stream1);
+    
 
 }
 
@@ -74,7 +75,7 @@ void JpgStreamApp::draw()
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) );
 	if(texture)
-		gl::draw(texture);
+		gl::draw(texture,Rectf(0,0,getWindowWidth(),getWindowHeight()));
 }
 
 CINDER_APP_BASIC( JpgStreamApp, RendererGl )
