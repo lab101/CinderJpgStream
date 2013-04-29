@@ -15,6 +15,7 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		00BAE65A0E7ED9C10018A608 /* JpgStreamApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00BAE6590E7ED9C10018A608 /* JpgStreamApp.cpp */; };
 		00CCAF15116A9FEE008396D5 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = 00CCAF14116A9FEE008396D5 /* CinderApp.icns */; };
+		01808CF0172E8FE300C74F46 /* AsyncStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 01808CEE172E8FE300C74F46 /* AsyncStream.cpp */; };
 		15B15D22172944A5001B231C /* JpgStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 15B15D20172944A5001B231C /* JpgStream.cpp */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
@@ -31,6 +32,8 @@
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		00BAE6590E7ED9C10018A608 /* JpgStreamApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = JpgStreamApp.cpp; path = ../src/JpgStreamApp.cpp; sourceTree = SOURCE_ROOT; };
 		00CCAF14116A9FEE008396D5 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CinderApp.icns; sourceTree = SOURCE_ROOT; };
+		01808CEE172E8FE300C74F46 /* AsyncStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AsyncStream.cpp; sourceTree = "<group>"; };
+		01808CEF172E8FE300C74F46 /* AsyncStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncStream.h; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		15B15D20172944A5001B231C /* JpgStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JpgStream.cpp; sourceTree = "<group>"; };
@@ -72,6 +75,8 @@
 				00BAE6590E7ED9C10018A608 /* JpgStreamApp.cpp */,
 				15B15D20172944A5001B231C /* JpgStream.cpp */,
 				15B15D21172944A5001B231C /* JpgStream.h */,
+				01808CEE172E8FE300C74F46 /* AsyncStream.cpp */,
+				01808CEF172E8FE300C74F46 /* AsyncStream.h */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 			files = (
 				00BAE65A0E7ED9C10018A608 /* JpgStreamApp.cpp in Sources */,
 				15B15D22172944A5001B231C /* JpgStream.cpp in Sources */,
+				01808CF0172E8FE300C74F46 /* AsyncStream.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
