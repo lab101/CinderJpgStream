@@ -16,38 +16,56 @@ class JpgStreamApp : public AppBasic {
   public:
 
     AsyncStream asyncStream;
+    AsyncStream asyncStream2;
 
-	gl::Texture texture;
-	
 	void setup();
 	void mouseDown( MouseEvent event );
 	void update();
 	void draw();
+
 };
 
 
 void JpgStreamApp::setup()
 {
+
+	setWindowSize(640*2, 500);
+	
+	asyncStream.setUrl("http://212.142.228.68/axis-cgi/mjpg/video.cgi?resolution=640x480");
+	asyncStream.start();
+
+	asyncStream2.setUrl("http://134.29.208.43/axis-cgi/mjpg/video.cgi?resolution=640x480");
+	asyncStream2.start();
+	
+
 }
 
 void JpgStreamApp::mouseDown( MouseEvent event )
 {
+	
+	// not working
+	// can only stop thread no restarting yet
+	
+//	if(asyncStream.isRunning)
+//		asyncStream.stop();
+//	else{
+//		asyncStream.start();
+//	}
 }
 
 void JpgStreamApp::update()
 {
-	if(asyncStream.isDataReady){
-		texture =  gl::Texture(asyncStream.pixels);
-		asyncStream.isDataReady = false;
-	}
+	asyncStream.update();
+	asyncStream2.update();
+
 }
 
 void JpgStreamApp::draw()
 {
 	// clear out the window with black
 	gl::clear( Color( 0, 0, 0 ) );
-	if(texture)
-		gl::draw(texture,Rectf(0,0,getWindowWidth(),getWindowHeight()));
+	if(asyncStream.texture) gl::draw(asyncStream.texture,Rectf(0,0,640,480));
+	if(asyncStream2.texture) gl::draw(asyncStream2.texture,Rectf(640,0,640*2,480));
 }
 
 CINDER_APP_BASIC( JpgStreamApp, RendererGl )
