@@ -1,5 +1,7 @@
 #pragma once
 
+#include "cinder/app/AppBasic.h"
+
 
 #include "cinder/ImageIo.h"
 #include "cinder/Surface.h"
@@ -7,24 +9,21 @@
 
 #include <boost/asio.hpp>
 #include <boost/array.hpp>
-#include <boost/thread.hpp>
 #include <boost/shared_ptr.hpp>
+
+#include "cinder/Thread.h"
 
 #include <iostream>
 #include <string>
 
 
 
-static char JFF = 0xFF;
-static char SOI = 0xD8;
-static char EOI = 0xD9;
 
 
 enum ContentStreamMode {
     MODE_HEADER = 0,
     MODE_JPEG = 1
 };
-
 
 
 class AsyncStream {
@@ -36,8 +35,8 @@ private:
     boost::asio::ip::tcp::socket* sock;//(io_service);
     boost::array<char, 4096> readBuffer;
 	
-	boost::shared_ptr<boost::thread> backgroundThread;
-
+	std::shared_ptr<std::thread> backgroundThread;
+	
     char* imageBuffer;
     int imageBufferIndex;
 	
@@ -45,9 +44,9 @@ private:
 	std::string mPath;
 	std::string mUrl;
 	
-   
+	
     ContentStreamMode mode;
-
+	
 public:
     AsyncStream();
 	
@@ -68,7 +67,7 @@ public:
 	
 	bool isDataReady;
 	bool isRunning;
-
-
-
+	
+	
+	
 };
