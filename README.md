@@ -7,5 +7,4 @@ Will implement the other features when needed :)
 
 Known issues:
 - restarting of a stream doesn't work
-- boost compile error on cinder 0.85
 
